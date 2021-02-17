@@ -10,6 +10,22 @@ print(driver.title)
 print(driver.current_url)
 
 
+# print(driver.page_source)
+javaScript = "window.scrollBy(0,1000);"
+driver.execute_script(javaScript)
+
+driver.execute_script("return document.readyState")
+driver.execute_script("return document.title")
+driver.find_element_by_xpath("//button[@name='username']")
+#FULL XPATH  /html/body/div[1]/div
+#XPATH //*[@id="Contentplaceholder1_T0982884A001_Col00"]
+
+#Javascript path  document.querySelector("#Contentplaceholder1_T0982884A001_Col00")
+
+
+driver.save_screenshot('TVA.png')
+
+
 driver.close()
 driver.quit()
 
