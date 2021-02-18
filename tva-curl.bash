@@ -49,7 +49,7 @@ rrdtool update tempC3.rrd N:$FEET:$CFS
 
 /usr/bin/rrdtool graph tempC3.png -t "Tellico" \
 --alt-y-grid --alt-autoscale --units-exponent 0 \
--w 600 -h 70 --upper-limit 100 --vertical-label 'FEET' --slope-mode --start -60 \
+-w 600 -h 70 --vertical-label 'FEET' --slope-mode --start -60 \
 DEF:ave=tempC3.rrd:FEET:AVERAGE \
 CDEF:C=ave,100,GE,ave,0,IF AREA:C#7F0000: \
 CDEF:D=ave,95,GE,ave,100,LT,ave,100,IF,0,IF AREA:D#9E0000: \
@@ -75,12 +75,12 @@ CDEF:WW=ave,0,GE,ave,5,LT,ave,5,IF,0,IF AREA:WW#0BFFF4: \
 CDEF:A=ave \
 VDEF:V=ave,AVERAGE \
 LINE1:ave \
-LINE1:A#000000:Temperature \
-DEF:tmax=tempC3.rrd:temp:MAX \
-DEF:tmin=tempC3.rrd:temp:MIN \
-'GPRINT:ave:LAST:Last\: %2.1lf C' \
-'GPRINT:tmin:MIN:Minimum\: %2.1lf C' \
-'GPRINT:tmax:MAX:Maximum\: %2.1lf C\j'
+LINE1:A#000000:FEET \
+DEF:tmax=tempC3.rrd:FEET:MAX \
+DEF:tmin=tempC3.rrd:FEET:MIN \
+'GPRINT:ave:LAST:Last\: %2.1lf ft' \
+'GPRINT:tmin:MIN:Minimum\: %2.1lf ft' \
+'GPRINT:tmax:MAX:Maximum\: %2.1lf ft\j'
 
 
 
