@@ -27,7 +27,7 @@ echo
 
 if [ ! -f "tempC3.rrd" ]; then
 rrdtool create tempC3.rrd \
---step 60 \
+--step 300 \
 DS:FEET:GAUGE:600:0:999999 \
 DS:CFS:GAUGE:600:0:999999 \
 RRA:AVERAGE:0.5:1:999999 \
@@ -49,7 +49,7 @@ rrdtool update tempC3.rrd N:$FEET:$CFS
 
 /usr/bin/rrdtool graph Tellico-FEET.png -t "Tellico" \
 --alt-y-grid --alt-autoscale --units-exponent 0 \
--w 600 -h 70 --vertical-label 'FEET' --slope-mode --start -60 \
+-w 600 -h 70 --vertical-label 'FEET' --slope-mode --start -300 \
 DEF:ave=tempC3.rrd:FEET:AVERAGE \
 CDEF:C=ave,100,GE,ave,0,IF AREA:C#7F0000: \
 CDEF:D=ave,95,GE,ave,100,LT,ave,100,IF,0,IF AREA:D#9E0000: \
@@ -86,7 +86,7 @@ DEF:tmin=tempC3.rrd:FEET:MIN \
 
 /usr/bin/rrdtool graph Tellico-CFS.png -t "Tellico" \
 --alt-y-grid --alt-autoscale --units-exponent 0 \
--w 600 -h 70 --vertical-label 'CFS' --slope-mode --start -60 \
+-w 600 -h 70 --vertical-label 'CFS' --slope-mode --start -300 \
 DEF:ave=tempC3.rrd:CFS:AVERAGE \
 CDEF:C=ave,100,GE,ave,0,IF AREA:C#7F0000: \
 CDEF:D=ave,95,GE,ave,100,LT,ave,100,IF,0,IF AREA:D#9E0000: \
