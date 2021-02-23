@@ -49,7 +49,7 @@ rrdtool update /mdc/PHANTOMJS/TVA/tempC3.rrd N:$FEET:$CFS
 
 /usr/bin/rrdtool graph /mdc/PHANTOMJS/TVA/Tellico-FEET.png -t "Tellico" \
 --alt-y-grid --alt-autoscale --units-exponent 0 \
--w 600 -h 70 --vertical-label 'FEET' --slope-mode --start -300 \
+-w 600 -h 70 --vertical-label 'FEET' --slope-mode --start -3d \
 DEF:ave=tempC3.rrd:FEET:AVERAGE \
 CDEF:C=ave,100,GE,ave,0,IF AREA:C#7F0000: \
 CDEF:D=ave,95,GE,ave,100,LT,ave,100,IF,0,IF AREA:D#9E0000: \
@@ -86,7 +86,7 @@ DEF:tmin=tempC3.rrd:FEET:MIN \
 
 /usr/bin/rrdtool graph /mdc/PHANTOMJS/TVA/Tellico-CFS.png -t "Tellico" \
 --alt-y-grid --alt-autoscale --units-exponent 0 \
--w 600 -h 70 --vertical-label 'CFS' --slope-mode --start -300 \
+-w 600 -h 70 --vertical-label 'CFS' --slope-mode --start -3d \
 DEF:ave=tempC3.rrd:CFS:AVERAGE \
 CDEF:C=ave,100,GE,ave,0,IF AREA:C#7F0000: \
 CDEF:D=ave,95,GE,ave,100,LT,ave,100,IF,0,IF AREA:D#9E0000: \
