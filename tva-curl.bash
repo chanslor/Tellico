@@ -25,7 +25,7 @@ echo
 echo "Inserting into RRD - N:$FEET:$CFS"
 echo
 
-if [ ! -f "tempC3.rrd" ]; then
+if [ ! -f "/mdc/PHANTOMJS/TVA/tempC3.rrd" ]; then
 rrdtool create tempC3.rrd \
 --step 300 \
 DS:FEET:GAUGE:600:0:999999 \
@@ -42,12 +42,12 @@ fi
 
 NOW=`date +%s`
 
-rrdtool update tempC3.rrd N:$FEET:$CFS
+rrdtool update /mdc/PHANTOMJS/TVA/tempC3.rrd N:$FEET:$CFS
 
 
 
 
-/usr/bin/rrdtool graph Tellico-FEET.png -t "Tellico" \
+/usr/bin/rrdtool graph /mdc/PHANTOMJS/TVA/Tellico-FEET.png -t "Tellico" \
 --alt-y-grid --alt-autoscale --units-exponent 0 \
 -w 600 -h 70 --vertical-label 'FEET' --slope-mode --start -300 \
 DEF:ave=tempC3.rrd:FEET:AVERAGE \
@@ -84,7 +84,7 @@ DEF:tmin=tempC3.rrd:FEET:MIN \
 
 
 
-/usr/bin/rrdtool graph Tellico-CFS.png -t "Tellico" \
+/usr/bin/rrdtool graph /mdc/PHANTOMJS/TVA/Tellico-CFS.png -t "Tellico" \
 --alt-y-grid --alt-autoscale --units-exponent 0 \
 -w 600 -h 70 --vertical-label 'CFS' --slope-mode --start -300 \
 DEF:ave=tempC3.rrd:CFS:AVERAGE \
